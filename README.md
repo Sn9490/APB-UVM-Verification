@@ -5,9 +5,6 @@
 
 # APB_UVM_Verification
 
-
-# APB_UVM_Verification
-
 ## Overview
 
 This project implements a complete UVM-based verification environment for the Advanced Peripheral Bus (APB) protocol. The verification environment validates APB finite state machine (FSM) behavior, protocol compliance, timing requirements, and transaction correctness using SystemVerilog, UVM, assertions, scoreboarding, and functional coverage.
