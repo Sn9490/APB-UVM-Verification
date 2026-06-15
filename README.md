@@ -1,6 +1,8 @@
-![SystemVerilog](https://img.shields.io/badge/SystemVerilog-Expert-blue)
+![SystemVerilog](https://img.shields.io/badge/SystemVerilog-Language-blue)
 ![UVM](https://img.shields.io/badge/UVM-Verification-green)
 ![APB](https://img.shields.io/badge/APB-Protocol-red)
+![SVA](https://img.shields.io/badge/SVA-Assertions-orange)
+![Functional_Coverage](https://img.shields.io/badge/Functional-Coverage-yellow)
 ![QuestaSim](https://img.shields.io/badge/QuestaSim-Simulator-blue)
 
 # APB_UVM_Verification
