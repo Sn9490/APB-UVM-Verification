@@ -1,80 +1,261 @@
 # APB_UVM_Verification
- Verified the APB FSM Which Consist of Idle(psel=0, penalble=0), Setup(psel=1, penalble=0) and Access(psel=1, penalble=1) state and done master to same slave and different Slave communication and understaood the importance of Pready signal. 
+
+## Overview
+
+This project implements a complete UVM-based verification environment for the Advanced Peripheral Bus (APB) protocol. The verification environment validates APB finite state machine (FSM) behavior, protocol compliance, timing requirements, and transaction correctness using SystemVerilog, UVM, assertions, scoreboarding, and functional coverage.
+
+---
+
+## APB Protocol States Verified
+
+The APB finite state machine consists of the following states:
+
+### Idle State
+
+* PSEL = 0
+* PENABLE = 0
+
+### Setup State
+
+* PSEL = 1
+* PENABLE = 0
+
+### Access State
+
+* PSEL = 1
+* PENABLE = 1
+
+All state transitions were verified according to the APB protocol specification.
 
 ---
 
 ## Features Verified
-- APB FSM Transitions
-  - Idle
-  - Setup
-  - Access
 
-- Write Operations
-- Read Operations
-- Wait State Handling
-- Back-to-Back Transactions
-- Same Slave and Different Slave Communication
+### FSM Verification
+
+* Idle → Setup Transition
+* Setup → Access Transition
+* Access → Idle Transition
+* Access → Setup Transition (Back-to-Back Transfers)
+
+### Transaction Verification
+
+* Single Write Transactions
+* Single Read Transactions
+* Consecutive Write Transactions
+* Consecutive Read Transactions
+* Mixed Read/Write Transactions
+
+### Communication Verification
+
+* Same-Slave Communication
+* Cross-Slave Communication
+* Multiple Slave Selection Scenarios
+
+### Wait-State Verification
+
+* PREADY Low Conditions
+* PREADY High Conditions
+* Extended Access Phase Handling
+
+### Protocol Compliance Checks
+
+* PSEL Stability
+* PENABLE Timing
+* Address Stability
+* Data Stability
+* Transfer Completion Conditions
 
 ---
 
 ## Verification Methodology
-- UVM-Based Testbench
-- Constrained Random Verification
-- Functional Coverage
-- Assertion-Based Verification
-- Scoreboarding
-- Regression Testing
+
+The design was verified using Universal Verification Methodology (UVM).
+
+### Verification Techniques Used
+
+* UVM-Based Verification
+* Constrained Random Verification
+* Directed Testing
+* Functional Coverage
+* Code Coverage
+* Assertion-Based Verification (SVA)
+* Coverage-Driven Verification
+* Scoreboarding
+* Regression Testing
 
 ---
 
-## UVM Components
-- Sequencer
-- Driver
-- Monitor
-- Agent
-- Scoreboard
-- Coverage Collector
-- Environment
-- Testcases
+## UVM Architecture
+
+The verification environment consists of the following UVM components:
+
+### Sequence Item
+
+* Transaction-level packet generation
+
+### Sequencer
+
+* Controls transaction flow
+
+### Driver
+
+* Drives APB transactions to DUT
+
+### Monitor
+
+* Captures DUT activity
+
+### Agent
+
+* Encapsulates driver, monitor, and sequencer
+
+### Scoreboard
+
+* Compares expected and actual DUT behavior
+
+### Coverage Collector
+
+* Collects functional coverage metrics
+
+### Environment
+
+* Integrates all verification components
+
+### Test Cases
+
+* Directed Tests
+* Constrained Random Tests
 
 ---
 
 ## Assertions Implemented
-- Reset Checks
-- Setup to Access Transition
-- Read/Write Timing Checks
-- Protocol Stability Checks
+
+SystemVerilog Assertions (SVA) were implemented to verify protocol correctness.
+
+### Assertion Checks
+
+* Reset Behavior Validation
+* Idle-to-Setup Transition Checks
+* Setup-to-Access Transition Checks
+* Read Transaction Timing Checks
+* Write Transaction Timing Checks
+* PREADY Wait-State Validation
+* Protocol Stability Checks
+* Signal Timing Compliance Checks
 
 ---
 
-## Coverage Achieved
-- Functional Coverage: 95%
-- Code Coverage: 90%+
+## Functional Coverage
+
+Coverage models were developed to ensure comprehensive protocol verification.
+
+### Coverage Points
+
+* FSM State Coverage
+* Read Transactions
+* Write Transactions
+* Slave Selection Coverage
+* Wait-State Coverage
+* Back-to-Back Transfer Coverage
+* Cross Coverage of Protocol Scenarios
+
+### Coverage Results
+
+* Functional Coverage: 95%
+* Code Coverage: 90%+
+
+---
+
+## Regression Testing
+
+Regression suites were executed to verify protocol stability and functionality under various scenarios.
+
+### Regression Includes
+
+* Directed Testcases
+* Randomized Testcases
+* Corner Case Scenarios
+* Wait-State Scenarios
+* Back-to-Back Transactions
+* Multi-Slave Communication
+
+---
+
+## Results
+
+* Successfully verified APB protocol functionality.
+* Achieved 95% functional coverage.
+* Achieved 90%+ code coverage.
+* Validated protocol compliance through assertions.
+* Verified same-slave and cross-slave communication.
+* Debugged and resolved protocol violations using waveform analysis and regression testing.
 
 ---
 
 ## Tools Used
-- QuestaSim
-- SystemVerilog
-- UVM
-- Linux
+
+* SystemVerilog
+* UVM
+* QuestaSim
+* Linux
+* Git
 
 ---
 
 ## Simulation Flow
-1. Compile RTL and Testbench
-2. Run UVM Testcases
-3. Generate Waveforms
-4. Analyze Functional Coverage
-5. Debug Assertion Failures
+
+1. Compile RTL and Verification Environment.
+2. Run UVM Testcases.
+3. Execute Regression Suite.
+4. Generate Waveforms.
+5. Analyze Coverage Reports.
+6. Debug Assertion Failures.
+7. Achieve Coverage Closure.
 
 ---
 
-## Waveform Screenshots
-Waveforms are available in the `waveforms/` directory.
+## Repository Structure
+
+```text
+APB_UVM_Verification
+│
+├── rtl/
+├── tb/
+├── sequences/
+├── driver/
+├── monitor/
+├── scoreboard/
+├── coverage/
+├── assertions/
+├── tests/
+├── docs/
+├── waveforms/
+└── README.md
+```
+
+---
+
+## Waveforms
+
+Simulation waveform screenshots are available in the `waveforms/` directory.
 
 ---
 
 ## Verification Architecture
-Architecture diagrams are available in the `docs/` directory.
-```
+
+UVM architecture diagrams are available in the `docs/` directory.
+
+---
+
+## Contact
+
+Guru Naveen Reddy Siddu
+
+Email: [gurunaveenreddys@gmail.com](mailto:gurunaveenreddys@gmail.com)
+
+LinkedIn:
+https://www.linkedin.com/in/siddu-guru-naveen-reddy-93b597282
+
+GitHub:
+https://github.com/Sn9490
