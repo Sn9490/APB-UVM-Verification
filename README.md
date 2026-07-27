@@ -5,11 +5,11 @@
 ![Functional_Coverage](https://img.shields.io/badge/Functional-Coverage-yellow)
 ![QuestaSim](https://img.shields.io/badge/QuestaSim-Simulator-blue)
 
-# APB_UVM_Verification
+# APB IP Core Verification
 
 ## Overview
 
-This project implements a complete UVM-based verification environment for the Advanced Peripheral Bus (APB) protocol. The verification environment validates APB finite state machine (FSM) behavior, protocol compliance, timing requirements, and transaction correctness using SystemVerilog, UVM, assertions, scoreboarding, and functional coverage.
+Verified the APB FSM Which Consist of Idle(psel=0, penalble=0), Setup(psel=1, penalble=0) and Access(psel=1, penalble=1) state and done master to same slave and different Slave communication and understaood the importance of Pready signal. 
 
 ---
 
