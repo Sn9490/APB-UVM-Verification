@@ -2,236 +2,167 @@
 ![UVM](https://img.shields.io/badge/UVM-Verification-green)
 ![APB](https://img.shields.io/badge/APB-Protocol-red)
 ![SVA](https://img.shields.io/badge/SVA-Assertions-orange)
-![Functional_Coverage](https://img.shields.io/badge/Functional-Coverage-yellow)
+![Functional Coverage](https://img.shields.io/badge/Functional-Coverage-yellow)
 ![QuestaSim](https://img.shields.io/badge/QuestaSim-Simulator-blue)
 
 # APB IP Core Verification
 
-## Overview
+## Project Overview
 
-Verified the APB FSM Which Consist of Idle(psel=0, penalble=0), Setup(psel=1, penalble=0) and Access(psel=1, penalble=1) state and done master to same slave and different Slave communication and understaood the importance of Pready signal. 
+This project focuses on the functional verification of an AMBA APB (Advanced Peripheral Bus) IP Core using **SystemVerilog**, **UVM**, and **SystemVerilog Assertions (SVA)**.
 
----
-
-## APB Protocol States Verified
-
-The APB finite state machine consists of the following states:
-
-### Idle State
-
-* PSEL = 0
-* PENABLE = 0
-
-### Setup State
-
-* PSEL = 1
-* PENABLE = 0
-
-### Access State
-
-* PSEL = 1
-* PENABLE = 1
-
-All state transitions were verified according to the APB protocol specification.
+The verification environment was developed using the Universal Verification Methodology (UVM) to validate APB protocol compliance, finite state machine (FSM) behavior, read/write transactions, wait-state handling, and communication between the APB master and multiple slaves.
 
 ---
 
-## Features Verified
+# Project Description
 
-### FSM Verification
+Verified the APB finite state machine consisting of the following protocol states:
 
-* Idle → Setup Transition
-* Setup → Access Transition
-* Access → Idle Transition
-* Access → Setup Transition (Back-to-Back Transfers)
+- **Idle** (PSEL = 0, PENABLE = 0)
+- **Setup** (PSEL = 1, PENABLE = 0)
+- **Access** (PSEL = 1, PENABLE = 1)
 
-### Transaction Verification
+The project also verified:
 
-* Single Write Transactions
-* Single Read Transactions
-* Consecutive Write Transactions
-* Consecutive Read Transactions
-* Mixed Read/Write Transactions
-
-### Communication Verification
-
-* Same-Slave Communication
-* Cross-Slave Communication
-* Multiple Slave Selection Scenarios
-
-### Wait-State Verification
-
-* PREADY Low Conditions
-* PREADY High Conditions
-* Extended Access Phase Handling
-
-### Protocol Compliance Checks
-
-* PSEL Stability
-* PENABLE Timing
-* Address Stability
-* Data Stability
-* Transfer Completion Conditions
+- Master to Same Slave communication
+- Master to Different Slave communication
+- Wait-state insertion using the **PREADY** signal
+- APB protocol timing and control signal behavior
 
 ---
 
-## Verification Methodology
+# Responsibilities
 
-The design was verified using Universal Verification Methodology (UVM).
-
-### Verification Techniques Used
-
-* UVM-Based Verification
-* Constrained Random Verification
-* Directed Testing
-* Functional Coverage
-* Code Coverage
-* Assertion-Based Verification (SVA)
-* Coverage-Driven Verification
-* Scoreboarding
-* Regression Testing
-
----
-
-## UVM Architecture
-
-The verification environment consists of the following UVM components:
-
-### Sequence Item
-
-* Transaction-level packet generation
-
-### Sequencer
-
-* Controls transaction flow
-
-### Driver
-
-* Drives APB transactions to DUT
-
-### Monitor
-
-* Captures DUT activity
-
-### Agent
-
-* Encapsulates driver, monitor, and sequencer
-
-### Scoreboard
-
-* Compares expected and actual DUT behavior
-
-### Coverage Collector
-
-* Collects functional coverage metrics
-
-### Environment
-
-* Integrates all verification components
-
-### Test Cases
-
-* Directed Tests
-* Constrained Random Tests
+- Architected a reusable **UVM-based verification environment**.
+- Defined the **Verification Plan** and **Feature Extraction Sheet**.
+- Developed directed and constrained-random testcases for:
+  - Write operations with and without wait states
+  - Read operations with and without wait states
+  - Same slave communication
+  - Different slave communication
+  - Back-to-back read/write transfers
+- Implemented multiple data and address generation modes:
+  - Random
+  - User Pattern
+  - Constant
+  - Increment
+  - Decrement
+- Generated **Functional Coverage** and **Code Coverage** for RTL verification sign-off.
+- Developed **SystemVerilog Assertions (SVA)** for:
+  - Reset verification
+  - Read transactions
+  - Write transactions
+  - Setup state
+  - Access state
+  - APB protocol timing
 
 ---
 
-## Assertions Implemented
+# UVM Verification Environment
 
-SystemVerilog Assertions (SVA) were implemented to verify protocol correctness.
+The verification environment consists of:
 
-### Assertion Checks
-
-* Reset Behavior Validation
-* Idle-to-Setup Transition Checks
-* Setup-to-Access Transition Checks
-* Read Transaction Timing Checks
-* Write Transaction Timing Checks
-* PREADY Wait-State Validation
-* Protocol Stability Checks
-* Signal Timing Compliance Checks
-
----
-
-## Functional Coverage
-
-Coverage models were developed to ensure comprehensive protocol verification.
-
-### Coverage Points
-
-* FSM State Coverage
-* Read Transactions
-* Write Transactions
-* Slave Selection Coverage
-* Wait-State Coverage
-* Back-to-Back Transfer Coverage
-* Cross Coverage of Protocol Scenarios
-
-### Coverage Results
-
-* Functional Coverage: 95%
-* Code Coverage: 90%+
+- Sequence Item
+- Sequencer
+- Driver
+- Monitor
+- Agent
+- Scoreboard
+- Coverage Collector
+- Environment
+- Test
+- Virtual Interface
 
 ---
 
-## Regression Testing
+# Features Verified
 
-Regression suites were executed to verify protocol stability and functionality under various scenarios.
+### APB FSM
 
-### Regression Includes
+- Idle State
+- Setup State
+- Access State
+- State Transitions
 
-* Directed Testcases
-* Randomized Testcases
-* Corner Case Scenarios
-* Wait-State Scenarios
-* Back-to-Back Transactions
-* Multi-Slave Communication
+### Transactions
 
----
+- Single Read
+- Single Write
+- Back-to-Back Read
+- Back-to-Back Write
+- Mixed Read/Write
 
-## Results
+### Slave Communication
 
-* Successfully verified APB protocol functionality.
-* Achieved 95% functional coverage.
-* Achieved 90%+ code coverage.
-* Validated protocol compliance through assertions.
-* Verified same-slave and cross-slave communication.
-* Debugged and resolved protocol violations using waveform analysis and regression testing.
+- Same Slave Communication
+- Different Slave Communication
 
----
+### Wait-State Handling
 
-## Tools Used
+- PREADY Low
+- PREADY High
+- Extended Access Cycle
 
-* SystemVerilog
-* UVM
-* QuestaSim
-* Linux
-* Git
+### Assertions
 
----
-
-## Simulation Flow
-
-1. Compile RTL and Verification Environment.
-2. Run UVM Testcases.
-3. Execute Regression Suite.
-4. Generate Waveforms.
-5. Analyze Coverage Reports.
-6. Debug Assertion Failures.
-7. Achieve Coverage Closure.
+- Reset Checks
+- Read Timing
+- Write Timing
+- Setup Phase
+- Access Phase
+- Protocol Compliance
 
 ---
 
-## Repository Structure
+# Verification Methodology
+
+- UVM
+- SystemVerilog
+- SystemVerilog Assertions (SVA)
+- Constrained Random Verification
+- Functional Coverage
+- Code Coverage
+- Coverage-Driven Verification
+- Regression Testing
+
+---
+
+# Tools Used
+
+- SystemVerilog
+- UVM
+- QuestaSim
+- Linux
+- Git
+
+---
+
+# Simulation Flow
+
+1. Compile RTL and Testbench
+2. Run UVM Testcases
+3. Execute Regression Suite
+4. Analyze Waveforms
+5. Debug Failures
+6. Generate Coverage Reports
+7. Complete Verification Sign-off
+
+---
+
+# Repository Structure
 
 ```text
-APB_UVM_Verification
+APB_UVM_Verification/
 │
 ├── rtl/
 ├── tb/
+├── sequence_item/
 ├── sequences/
+├── sequencer/
 ├── driver/
 ├── monitor/
+├── agent/
 ├── scoreboard/
 ├── coverage/
 ├── assertions/
@@ -243,26 +174,26 @@ APB_UVM_Verification
 
 ---
 
-## Waveforms
+# Key Highlights
 
-Simulation waveform screenshots are available in the `waveforms/` directory.
+- Reusable UVM Verification Environment
+- Directed and Constrained-Random Testing
+- APB Protocol Verification
+- Functional & Code Coverage
+- Assertion-Based Verification (SVA)
+- Waveform Debugging
+- Regression Testing
 
 ---
 
-## Verification Architecture
+# Contact
 
-UVM architecture diagrams are available in the `docs/` directory.
+**Guru Naveen Reddy Siddu**
 
----
+📧 Email: gurunaveenreddys@gmail.com
 
-## Contact
-
-Guru Naveen Reddy Siddu
-
-Email: [gurunaveenreddys@gmail.com](mailto:gurunaveenreddys@gmail.com)
-
-LinkedIn:
+🔗 LinkedIn:  
 https://www.linkedin.com/in/siddu-guru-naveen-reddy-93b597282
 
-GitHub:
+💻 GitHub:  
 https://github.com/Sn9490
